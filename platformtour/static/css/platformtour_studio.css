@@ -1,0 +1,38 @@
+#platformtour_studio_step_choices {
+  display: inline-block;
+  width: 45%;
+  border: 1px solid #ccc;
+  vertical-align: top;
+}
+#platformtour_studio_step_choices .step {
+  padding: 10px;
+}
+#platformtour_studio_step_choices .step.even {
+  background-color: #ddd;
+}
+#platformtour_studio_step_choices .step label {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-size: 1em;
+  line-height: 1em;
+}
+#platformtour_studio_step_choices .step label input {
+  display: none;
+}
+#platformtour_studio_step_choices .step label i {
+  position: absolute;
+  right: 0;
+  width: 20px;
+}
+
+#platformtour_studio_custom_steps {
+  display: none;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+#platformtour_studio_custom_steps.enabled {
+  display: block;
+}
