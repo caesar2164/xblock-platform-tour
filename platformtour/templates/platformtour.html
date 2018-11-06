@@ -1,9 +1,4 @@
-<article><!-- This style sheet is necessary for the intro.js text blocks to work. -->
-  <link rel="stylesheet" type="text/css" href="/static/css/platformtour.css">
-
-  <!-- So is this script. -->
-  <script src="/static/js/src/platformtour.js"></script>
-
+<article>
   <script>
     $(document).ready(function(){
 
@@ -29,13 +24,13 @@
     function addNavData(){
 
       var platformTourData = [];
-      var stepList = {{steps|safe}};
+      var stepList = {{ steps|safe }};
       var stepCount = 0;
       stepList.forEach(function(step) {
           if (step.find) {
-              platformTourData.push($(step.name).find(step.find));
+              platformTourData.push($(step.selector).find(step.find));
           } else {
-              platformTourData.push($(step.name));
+              platformTourData.push($(step.selector));
           }
           if (platformTourData[stepCount]) {
               platformTourData[stepCount].attr("data-step", stepCount + 1);
@@ -50,7 +45,7 @@
   <h2 class="problem-header">{{ display_name }}</h2>
   <p>{{ intro }}</p>
 
-  <button id="navmaker" style="color: white; font-size: medium; text-shadow: none; background: linear-gradient(to top, #0b0 0%,#080 20%,#0e0 100%); background-color:green;"> {{ button_label }}</button>
+  <button id="navmaker">{{ button_label }}</button>
 </article>
 
 <script>

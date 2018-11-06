@@ -1,3 +1,7 @@
+function PlatformTourXBlock(runtime, element) {
+    return;
+}
+
 /**
  * Intro.js v0.9.0
  * https://github.com/usablica/intro.js
