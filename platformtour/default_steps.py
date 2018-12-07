@@ -123,12 +123,18 @@ def get_choices(keys):
         key = step.get('key')
         title = step.get('title')
         if key and title:
-            is_choice_enabled = key in keys
-            choice = {'key': key, 'title': title, 'enabled': is_choice_enabled}
-            choices_list.append(choice)
-    is_custom_enabled = 'custom' in keys
-    choices_list.append({'key': 'custom', 'title': 'Custom (Advanced Users)', 'enabled': is_custom_enabled})
+            _append_choice(key, title, keys, choices_list)
+    _append_choice('custom', 'Custom (Advanced Users)', keys, choices_list)
     return choices_list
+
+def _append_choice(key, title, keys, choices_list):
+    is_choice_enabled = key in keys
+    choice = {
+        'key': key,
+        'title': title,
+        'enabled': is_choice_enabled
+    }
+    choices_list.append(choice)
 
 def get_default_keys():
     keys_list = []
