@@ -13,9 +13,11 @@ from xblock.fragment import Fragment
 import default_steps
 
 def _resource_string(path):
-    """Handy helper for getting resources from our kit."""
+    """
+    Handy helper for getting resources from our kit.
+    """
     data = pkg_resources.resource_string(__name__, path)
-    return data.decode("utf8")
+    return data.decode('utf8')
 
 
 class PlatformTourXBlock(XBlock):
@@ -26,9 +28,7 @@ class PlatformTourXBlock(XBlock):
 
     display_name = String(
         display_name=('Display Name'),
-        help=(
-            'This is the title for this component'
-        ),
+        help=('This is the title for this component'),
         default='Platform Tour',
         scope=Scope.settings,
     )
@@ -80,7 +80,7 @@ class PlatformTourXBlock(XBlock):
         when viewing courses.
         """
         step_choice_dict = default_steps.get_display_steps(self.step_choices)
-        if "custom" in self.step_choices:
+        if 'custom' in self.step_choices:
             step_choice_dict.extend(self.custom_steps)
         steps = json.dumps(step_choice_dict)
 
@@ -155,7 +155,9 @@ class PlatformTourXBlock(XBlock):
     # workbench while developing your XBlock.
     @staticmethod
     def workbench_scenarios():
-        """A canned scenario for display in the workbench."""
+        """
+        A canned scenario for display in the workbench.
+        """
         return [
             ("PlatformTourXBlock",
              """<platformtour/>
