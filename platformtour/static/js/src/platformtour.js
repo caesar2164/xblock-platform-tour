@@ -1,5 +1,5 @@
 function PlatformTourXBlock(runtime, element) {
-    $('#navmaker').click(function(){
+    $('button.navmaker', element).click(function(){
         introJs().start();
     });
 }
