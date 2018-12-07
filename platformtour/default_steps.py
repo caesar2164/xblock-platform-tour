@@ -137,14 +137,16 @@ def _append_choice(key, title, keys, choices_list):
     choices_list.append(choice)
 
 def get_default_keys():
-    keys_list = []
-    for step in DEFAULT_STEPS:
-        keys_list.append(step.get('key'))
-    return keys_list
+    keys = [
+        step.get('key')
+        for step in DEFAULT_STEPS
+    ]
+    return keys
 
 def get_display_steps(keys):
-    step_list = []
-    for step in DEFAULT_STEPS:
-        if step.get('key') in keys:
-            step_list.append(step)
-    return step_list
+    steps = [
+        step
+        for step in DEFAULT_STEPS
+        if step.get('key') in keys
+    ]
+    return steps
