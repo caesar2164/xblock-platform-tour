@@ -1,26 +1,26 @@
-#platformtour_studio_step_choices {
+#platformtour_studio_enabled_steps {
   display: inline-block;
   width: 45%;
   border: 1px solid #ccc;
   vertical-align: top;
 }
-#platformtour_studio_step_choices .step {
+#platformtour_studio_enabled_steps .step {
   padding: 10px;
 }
-#platformtour_studio_step_choices .step.even {
+#platformtour_studio_enabled_steps .step.even {
   background-color: #ddd;
 }
-#platformtour_studio_step_choices .step label {
+#platformtour_studio_enabled_steps .step label {
   position: relative;
   display: inline-block;
   width: 100%;
   font-size: 1em;
   line-height: 1em;
 }
-#platformtour_studio_step_choices .step label input {
+#platformtour_studio_enabled_steps .step label input {
   display: none;
 }
-#platformtour_studio_step_choices .step label i {
+#platformtour_studio_enabled_steps .step label i {
   position: absolute;
   right: 0;
   width: 20px;

@@ -8,7 +8,7 @@ function PlatformTourStudioUI(runtime, element) {
     var url = runtime.handlerUrl(element, 'studio_view_save');
 
     var customSteps = $("#platformtour_studio_custom_steps");
-    var stepChoices = $("#platformtour_studio_step_choices");
+    var stepChoices = $("#platformtour_studio_enabled_steps");
 
     var checkboxIconCheckedClass = "fa-check-square-o ";
     var checkboxIconUncheckedClass = "fa-square-o ";
@@ -46,7 +46,7 @@ function PlatformTourStudioUI(runtime, element) {
                 'display_name': $("#platformtour_studio_display_name").val(),
                 'button_label': $("#platformtour_studio_button_label").val(),
                 'intro': $("#platformtour_studio_intro").val(),
-                'step_choices': stepChoicesJson,
+                'enabled_default_steps': stepChoicesJson,
                 'custom_steps': JSON.parse(customSteps.val()),
             }),
             success: function buttonSaveOnSuccess() {

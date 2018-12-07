@@ -26,9 +26,9 @@
 
         <li class="field comp-setting-entry is-set">
             <div class="wrapper-comp-setting">
-                <label class="label setting-label" for="platformtour_studio_step_choices">Choose the steps for the Platform Tour</label>
-                <div id="platformtour_studio_step_choices">
-                  {% for step in step_choices %}
+                <label class="label setting-label" for="platformtour_studio_enabled_steps">Choose the steps for the Platform Tour</label>
+                <div id="platformtour_studio_enabled_steps">
+                  {% for step in enabled_default_steps %}
                     <div class="step {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" data-key="{{ step.key }}">
                       <label>
                         {{ step.title }}

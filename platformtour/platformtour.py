@@ -55,7 +55,7 @@ class PlatformTourXBlock(XBlock):
         default='Click the button below to learn how to navigate the platform.',
         scope=Scope.settings,
     )
-    step_choices = List(
+    enabled_default_steps = List(
         display_name=('Choose the steps for the Platform Tour'),
         help=(
             'List representing steps of the tour'
@@ -89,8 +89,8 @@ class PlatformTourXBlock(XBlock):
         The primary view of the PlatformTourXBlock, shown to students
         when viewing courses.
         """
-        step_choice_dict = default_steps.get_display_steps(self.step_choices)
-        if 'custom' in self.step_choices:
+        step_choice_dict = default_steps.get_display_steps(self.enabled_default_steps)
+        if 'custom' in self.enabled_default_steps:
             step_choice_dict.extend(self.custom_steps)
         steps = json.dumps(step_choice_dict)
 
@@ -119,14 +119,14 @@ class PlatformTourXBlock(XBlock):
         Build the fragment for the edit/studio view
         Implementation is optional.
         """
-        step_choice_keys = self.step_choices or default_steps.get_default_keys()
+        step_choice_keys = self.enabled_default_steps or default_steps.get_default_keys()
         context = context or {}
         context.update(
             {
                 'display_name': self.display_name,
                 'button_label': self.button_label,
                 'intro': self.intro,
-                'step_choices': default_steps.get_choices(step_choice_keys),
+                'enabled_default_steps': default_steps.get_choices(step_choice_keys),
                 'custom_steps': json.dumps(self.custom_steps),
             }
         )
@@ -150,14 +150,14 @@ class PlatformTourXBlock(XBlock):
         self.display_name = data['display_name']
         self.button_label = data['button_label']
         self.intro = data['intro']
-        self.step_choices = data['step_choices']
+        self.enabled_default_steps = data['enabled_default_steps']
         self.custom_steps = data['custom_steps']
 
         return {
             'display_name': self.display_name,
             'button_label': self.button_label,
             'intro': self.intro,
-            'step_choices': self.step_choices,
+            'enabled_default_steps': self.enabled_default_steps,
             'custom_steps': self.custom_steps,
         }
 
