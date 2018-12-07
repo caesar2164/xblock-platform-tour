@@ -4,10 +4,13 @@ a course through a digital tour.
 """
 import json
 import pkg_resources
+
 from django.template import Context
 from django.template.loader import get_template
 from xblock.core import XBlock
-from xblock.fields import List, Scope, String
+from xblock.fields import List
+from xblock.fields import Scope
+from xblock.fields import String
 from xblock.fragment import Fragment
 
 import default_steps
@@ -28,38 +31,45 @@ class PlatformTourXBlock(XBlock):
 
     display_name = String(
         display_name=('Display Name'),
-        help=('This is the title for this component'),
+        help=(
+            'The title for this component'
+        ),
         default='Platform Tour',
         scope=Scope.settings,
     )
-
     button_label = String(
         display_name=('Button label'),
-        help=('This is the text that will appear on the button'),
+        help=(
+            'The text that will appear on the button on which learners click'
+            ' to start the Platform Tour.'
+        ),
         default='Begin Platform Tour',
         scope=Scope.settings,
     )
-
     intro = String(
         display_name=('Introduction text'),
-        help=('This is the introduction that will precede the button'
-            ' and explain its presence to the user'),
-        default='Click the button below to learn how to navigate the platform!',
+        help=(
+            'The introduction that will precede the button'
+            ' and explain its presence to the user'
+        ),
+        default='Click the button below to learn how to navigate the platform.',
         scope=Scope.settings,
     )
-
     step_choices = List(
         display_name=('Choose the steps for the Platform Tour'),
-        help=('List representing steps of the tour'),
+        help=(
+            'List representing steps of the tour'
+        ),
         default=[],
         multiline_editor=True,
         scope=Scope.settings,
         resettable_editor=False,
     )
-
     custom_steps = List(
         display_name=('Custom steps for the platform tour'),
-        help=('JSON dictionaries representing additional steps of the tour'),
+        help=(
+            'JSON dictionaries representing additional steps of the tour'
+        ),
         default=[],
         multiline_editor=True,
         scope=Scope.settings,

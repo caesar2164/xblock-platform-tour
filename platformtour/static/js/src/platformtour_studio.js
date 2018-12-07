@@ -16,7 +16,7 @@ function PlatformTourStudioUI(runtime, element) {
     $(".step input", stepChoices).click(function() {
         var stepSelected = $(this).attr('name');
         $(this).siblings("i").toggleClass(checkboxIconCheckedClass + checkboxIconUncheckedClass);
-        if (stepSelected == "custom") {
+        if (stepSelected === "custom") {
             customSteps.toggleClass("enabled");
         }
     });
