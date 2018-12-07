@@ -13,7 +13,7 @@ from xblock.fields import Scope
 from xblock.fields import String
 from xblock.fragment import Fragment
 
-import default_steps
+from platformtour import default_steps
 
 def _resource_string(path):
     """
