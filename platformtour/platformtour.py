@@ -108,9 +108,9 @@ class PlatformTourXBlock(XBlock):
             template,
             context
         )
-        fragment.add_css(_resource_string('static/css/platformtour.css'),)
-        fragment.add_javascript(_resource_string('static/js/src/intro.js'))
-        fragment.add_javascript(_resource_string('static/js/src/platformtour.js'))
+        fragment.add_css_url('static/css/platformtour.css')
+        fragment.add_javascript_url('static/js/src/intro.js')
+        fragment.add_javascript_url('static/js/src/platformtour.js')
         fragment.initialize_js('PlatformTourXBlock')
         return fragment
 
@@ -135,8 +135,8 @@ class PlatformTourXBlock(XBlock):
             template,
             context,
         )
-        fragment.add_css(_resource_string('static/css/platformtour_studio.css'))
-        fragment.add_javascript(_resource_string('static/js/src/platformtour_studio.js'))
+        fragment.add_css_url('static/css/platformtour_studio.css')
+        fragment.add_javascript_url('static/js/src/platformtour_studio.js')
         fragment.initialize_js('PlatformTourStudioUI')
         return fragment
 
