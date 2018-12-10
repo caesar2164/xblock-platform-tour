@@ -78,10 +78,20 @@ class PlatformTourXBlock(XBlock):
     def build_fragment(
         self,
         template,
-        contect_dict,
+        context_dict,
+        initialize_js_func,
+        additional_css=[],
+        additional_js=[],
     ):
-        context = Context(contect_dict)
+        context = Context(context_dict)
         fragment = Fragment(template.render(context))
+        for item in additional_css:
+            url = self.runtime.local_resource_url(self, item)
+            fragment.add_css_url(url)
+        for item in additional_js:
+            url = self.runtime.local_resource_url(self, item)
+            fragment.add_javascript_url(url)
+        fragment.initialize_js(initialize_js_func)
         return fragment
 
     def student_view(self, context=None):
@@ -106,12 +116,16 @@ class PlatformTourXBlock(XBlock):
         template = get_template('platformtour.html')
         fragment = self.build_fragment(
             template,
-            context
+            context,
+            initialize_js_func='PlatformTourXBlock',
+            additional_css=[
+                'static/css/platformtour.css',
+            ],
+            additional_js=[
+                'static/js/src/intro.js',
+                'static/js/src/platformtour.js',
+            ],
         )
-        fragment.add_css_url('static/css/platformtour.css')
-        fragment.add_javascript_url('static/js/src/intro.js')
-        fragment.add_javascript_url('static/js/src/platformtour.js')
-        fragment.initialize_js('PlatformTourXBlock')
         return fragment
 
     def studio_view(self, context=None):
@@ -134,10 +148,14 @@ class PlatformTourXBlock(XBlock):
         fragment = self.build_fragment(
             template,
             context,
+            initialize_js_func='PlatformTourStudioUI',
+            additional_css=[
+                'static/css/platformtour_studio.css',
+            ],
+            additional_js=[
+                'static/js/src/platformtour_studio.js',
+            ],
         )
-        fragment.add_css_url('static/css/platformtour_studio.css')
-        fragment.add_javascript_url('static/js/src/platformtour_studio.js')
-        fragment.initialize_js('PlatformTourStudioUI')
         return fragment
 
     @XBlock.json_handler
