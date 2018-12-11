@@ -15,8 +15,6 @@ from xblockutils.resources import ResourceLoader
 
 import default_steps
 
-loader = ResourceLoader(__name__)
-
 def _resource_string(path):
     """
     Handy helper for getting resources from our kit.
@@ -30,6 +28,8 @@ class PlatformTourXBlock(XBlock):
     Allows students to tour through the course and get familiar with the
     platform.
     """
+
+    loader = ResourceLoader(__name__)
 
     display_name = String(
         display_name=('Display Name'),
