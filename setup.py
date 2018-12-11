@@ -39,5 +39,5 @@ setup(
             'platformtour = platformtour:PlatformTourXBlock',
         ]
     },
-    package_data=package_data('platformtour', ['static', 'public']),
+    package_data=package_data('platformtour', ['public']),
 )

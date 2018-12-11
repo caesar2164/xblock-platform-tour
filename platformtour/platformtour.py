@@ -119,11 +119,11 @@ class PlatformTourXBlock(XBlock):
             context,
             initialize_js_func='PlatformTourXBlock',
             additional_css=[
-                'static/css/platformtour.css',
+                'public/css/platformtour.css',
             ],
             additional_js=[
-                'static/js/src/intro.js',
-                'static/js/src/platformtour.js',
+                'public/js/src/intro.js',
+                'public/js/src/platformtour.js',
             ],
         )
         return fragment
@@ -150,10 +150,10 @@ class PlatformTourXBlock(XBlock):
             context,
             initialize_js_func='PlatformTourStudioUI',
             additional_css=[
-                'static/css/platformtour_studio.css',
+                'public/css/platformtour_studio.css',
             ],
             additional_js=[
-                'static/js/src/platformtour_studio.js',
+                'public/js/src/platformtour_studio.js',
             ],
         )
         return fragment
