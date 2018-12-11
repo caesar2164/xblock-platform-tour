@@ -6,14 +6,16 @@ import json
 import pkg_resources
 
 from django.template import Context
-from django.template.loader import get_template
 from xblock.core import XBlock
 from xblock.fields import List
 from xblock.fields import Scope
 from xblock.fields import String
 from xblock.fragment import Fragment
+from xblockutils.resources import ResourceLoader
 
 import default_steps
+
+loader = ResourceLoader(__name__)
 
 def _resource_string(path):
     """
@@ -77,14 +79,12 @@ class PlatformTourXBlock(XBlock):
 
     def build_fragment(
         self,
-        template,
-        context_dict,
+        rendered_template,
         initialize_js_func,
         additional_css=[],
         additional_js=[],
     ):
-        context = Context(context_dict)
-        fragment = Fragment(template.render(context))
+        fragment = Fragment(rendered_template)
         for item in additional_css:
             url = self.runtime.local_resource_url(self, item)
             fragment.add_css_url(url)
@@ -113,10 +113,12 @@ class PlatformTourXBlock(XBlock):
                 'steps': steps,
             }
         )
-        template = get_template('platformtour.html')
+        rendered_template = self.loader.render_django_template(
+            'templates/platformtour.html',
+            context=Context(context),
+        )
         fragment = self.build_fragment(
-            template,
-            context,
+            rendered_template,
             initialize_js_func='PlatformTourXBlock',
             additional_css=[
                 'public/css/platformtour.css',
@@ -144,10 +146,12 @@ class PlatformTourXBlock(XBlock):
                 'custom_steps': json.dumps(self.custom_steps),
             }
         )
-        template = get_template('platformtour_studio.html')
+        rendered_template = self.loader.render_django_template(
+            'templates/platformtour_studio.html',
+            context=Context(context),
+        )
         fragment = self.build_fragment(
-            template,
-            context,
+            rendered_template,
             initialize_js_func='PlatformTourStudioUI',
             additional_css=[
                 'public/css/platformtour_studio.css',
