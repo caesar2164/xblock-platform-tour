@@ -47,10 +47,11 @@ setup(
     package_dir={
         'platformtour': 'platformtour',
     },
-    package_data={
-        'platformtour': [
+    package_data=package_data(
+        'platformtour',
+        [
             'public/*',
             'templates/*',
         ],
-    },
+    ),
 )
