@@ -4,7 +4,7 @@ a course through a digital tour.
 """
 import json
 
-from django.template import Context
+from django.template.context import Context
 from xblock.core import XBlock
 from xblock.fields import List
 from xblock.fields import Scope
