@@ -44,14 +44,12 @@ setup(
             'platformtour = platformtour:PlatformTourXBlock',
         ]
     },
-    package_dir={
-        'platformtour': 'platformtour',
-    },
     package_data=package_data(
         'platformtour',
         [
-            'public/*',
-            'templates/*',
+            'static',
+            'public',
+            'templates',
         ],
     ),
 )

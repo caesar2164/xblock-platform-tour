@@ -3,6 +3,7 @@ This is the core logic for the Platform Tour xblock, which introduces students t
 a course through a digital tour.
 """
 import json
+import os
 
 from django.template.context import Context
 from xblock.core import XBlock
@@ -69,6 +70,14 @@ class PlatformTourXBlock(XBlock):
         scope=Scope.settings,
     )
 
+    def get_resource_url(self, path):
+        """
+        Retrieve a public URL for the file path
+        """
+        path = os.path.join('public', path)
+        resource_url = self.runtime.local_resource_url(self, path)
+        return resource_url
+
     def build_fragment(
         self,
         rendered_template,
@@ -78,10 +87,10 @@ class PlatformTourXBlock(XBlock):
     ):
         fragment = Fragment(rendered_template)
         for item in additional_css:
-            url = self.runtime.local_resource_url(self, item)
+            url = self.get_resource_url(self, item)
             fragment.add_css_url(url)
         for item in additional_js:
-            url = self.runtime.local_resource_url(self, item)
+            url = self.get_resource_url(self, item)
             fragment.add_javascript_url(url)
         fragment.initialize_js(initialize_js_func)
         return fragment
@@ -113,11 +122,11 @@ class PlatformTourXBlock(XBlock):
             rendered_template,
             initialize_js_func='PlatformTourXBlock',
             additional_css=[
-                'public/css/platformtour.css',
+                'css/platformtour.css',
             ],
             additional_js=[
-                'public/js/src/intro.js',
-                'public/js/src/platformtour.js',
+                'js/src/intro.js',
+                'js/src/platformtour.js',
             ],
         )
         return fragment
@@ -146,10 +155,10 @@ class PlatformTourXBlock(XBlock):
             rendered_template,
             initialize_js_func='PlatformTourStudioUI',
             additional_css=[
-                'public/css/platformtour_studio.css',
+                'css/platformtour_studio.css',
             ],
             additional_js=[
-                'public/js/src/platformtour_studio.js',
+                'js/src/platformtour_studio.js',
             ],
         )
         return fragment
