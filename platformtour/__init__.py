@@ -1,1 +1,1 @@
-#from .platformtour import PlatformTourXBlock
+from .platformtour import PlatformTourXBlock

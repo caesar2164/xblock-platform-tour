@@ -3,7 +3,6 @@ This is the core logic for the Platform Tour xblock, which introduces students t
 a course through a digital tour.
 """
 import json
-import pkg_resources
 
 from django.template import Context
 from xblock.core import XBlock
@@ -14,13 +13,6 @@ from xblock.fragment import Fragment
 from xblockutils.resources import ResourceLoader
 
 import default_steps
-
-def _resource_string(path):
-    """
-    Handy helper for getting resources from our kit.
-    """
-    data = pkg_resources.resource_string(__name__, path)
-    return data.decode('utf8')
 
 
 class PlatformTourXBlock(XBlock):
