@@ -87,10 +87,10 @@ class PlatformTourXBlock(XBlock):
     ):
         fragment = Fragment(rendered_template)
         for item in additional_css:
-            url = self.get_resource_url(self, item)
+            url = self.get_resource_url(item)
             fragment.add_css_url(url)
         for item in additional_js:
-            url = self.get_resource_url(self, item)
+            url = self.get_resource_url(item)
             fragment.add_javascript_url(url)
         fragment.initialize_js(initialize_js_func)
         return fragment
