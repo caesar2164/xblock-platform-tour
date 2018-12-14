@@ -10,25 +10,4 @@
     </div>
 </article>
 
-<script>
-    $(document).ready(function(){
-        var stepList = {{ steps|safe }};
-        var platformTourData = [];
-        var stepsAdded = 1;
-        stepList.forEach(function(step, i) {
-            var stepElement = $(step.selector);
-            if (step.find) {
-                stepElement = $(step.selector).find(step.find);
-            }
-            if (stepElement) {
-                platformTourData.push(stepElement);
-                platformTourData[i].attr("data-step", stepsAdded);
-                platformTourData[i].attr("data-intro", step.dataIntro);
-                platformTourData[i].attr("data-position", step.dataPosition);
-                var screenReaderListItem = '<li class="step">' + step.dataIntro + '</li>';
-                $('#screen-reader-steps').append(screenReaderListItem);
-                stepsAdded++;
-            }
-        });
-    });
-</script>
+<script class="platformtour-steps" type="application/json">{{ steps|safe }}</script>

@@ -13,7 +13,7 @@ from xblock.fields import String
 from xblock.fragment import Fragment
 from xblockutils.resources import ResourceLoader
 
-import default_steps
+from . import default_steps
 
 
 class PlatformTourXBlock(XBlock):
